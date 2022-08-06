@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   display: flex;
@@ -11,11 +11,7 @@ const HeaderContainer = styled.div`
 `;
 
 const Header = () => {
-    return(
-        <HeaderContainer>
-            хедер
-        </HeaderContainer>
-    );
-}
+  return <HeaderContainer>хедер</HeaderContainer>;
+};
 
-export default Header
+export default Header;

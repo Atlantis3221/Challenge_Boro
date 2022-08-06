@@ -8,7 +8,7 @@ const FilterView = () => {
       <FilterCaption>View: </FilterCaption>
       <RadioContainer>
         <label> Card
-          <RadioInput type="radio" checked name="cards-type" value="card" />
+          <RadioInput type="radio" name="cards-type" value="card" />
         </label>
         <label> Tree list
           <RadioInput type="radio" name="cards-type" value="tree-list" />
