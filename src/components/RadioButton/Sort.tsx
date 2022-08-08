@@ -1,5 +1,5 @@
 import React from "react";
-import { CardSort } from "./Main";
+import { CardSort } from "../Main";
 
 import {
   FilterCaption,

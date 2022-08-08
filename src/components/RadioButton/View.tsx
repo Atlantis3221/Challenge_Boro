@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "./Main";
+import { View } from "../Main";
 
 import {
   FilterCaption,

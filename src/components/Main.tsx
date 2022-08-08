@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useMemo } from "react";
 import Cards from "./Cards/Cards";
 import Pagination from "./Pagination";
-import FilterView from "./View";
-import FilterSort from "./Sort";
+import FilterView from "./RadioButton/View";
+import FilterSort from "./RadioButton/Sort";
 import ResetButton from "./ResetButton";
 import useCatalog from "../hooks/useCatalog";
 import styled from "styled-components";
