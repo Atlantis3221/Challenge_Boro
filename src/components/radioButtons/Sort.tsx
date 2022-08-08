@@ -1,5 +1,5 @@
 import React from "react";
-import { CardSort } from "../Cards";
+import { CardSort } from "../Main";
 
 import {
   FilterCaption,
@@ -19,7 +19,7 @@ const FilterSort:React.FC<{
         <label>
           Category
           {" "}
-          <input
+          <RadioInput
             type="radio"
             name="sort"
             checked={filterValue===CardSort.Category}
@@ -30,12 +30,12 @@ const FilterSort:React.FC<{
         <label>
           Date
           {" "}
-          <input type="radio" name="sort" checked={filterValue===CardSort.Timestamp} value={CardSort.Timestamp} onChange={onChange}/>
+          <RadioInput type="radio" name="sort" checked={filterValue===CardSort.Timestamp} value={CardSort.Timestamp} onChange={onChange}/>
         </label>
         <label>
           Size
           {" "}
-          <input type="radio" name="sort" checked={filterValue===CardSort.FileSize} value={CardSort.FileSize} onChange={onChange}/>
+          <RadioInput type="radio" name="sort" checked={filterValue===CardSort.FileSize} value={CardSort.FileSize} onChange={onChange}/>
         </label>
       </RadioContainer>
     </FilterContainer>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { CardSort, ICard } from "../components/Cards";
+import { CardSort, ICard } from "../components/Main";
 
 const useCatalog = () => {
   const [error, setError] = useState(null);

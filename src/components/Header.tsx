@@ -6,12 +6,23 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
   width: 100%;
+  padding: 15px 30px;
+  background: lightgray;
+  z-index: 100;
+`;
+
+const HeaderText = styled.h1`
+  font-size: 24px;
+  font-weight: 700;
 `;
 
 const Header = () => {
-  return <HeaderContainer>хедер</HeaderContainer>;
+  return (
+    <HeaderContainer>
+      <HeaderText>Элекард</HeaderText>
+    </HeaderContainer>
+  );
 };
 
 export default Header;
