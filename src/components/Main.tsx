@@ -6,6 +6,8 @@ import FilterSort from "./Sort";
 import ResetButton from "./ResetButton";
 import useCatalog from "../hooks/useCatalog";
 import styled from "styled-components";
+import Tree from "./Tree";
+
 
 const Layout = styled.main`
   padding: 30px;
@@ -22,8 +24,14 @@ export enum CardSort {
   FileSize = "filesize",
 }
 
+export enum View {
+  Cards = "cards",
+  Tree = "tree",
+}
+
 const Main = () => {
-  const { data, sort, handleSortChange } = useCatalog();
+  const { data, sort, view, loading, handleSortChange, handleViewChange, categories } =
+    useCatalog();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(25);
@@ -46,7 +54,6 @@ const Main = () => {
     if (getLocal !== null) {
       setDeletedCards(getLocal);
     }
-
   }, [getLocal]);
 
   useEffect(() => {
@@ -57,25 +64,34 @@ const Main = () => {
     setDeletedCards([]);
     localStorage.clear();
   };
+
   const paginate = (pageNumbers: number) => {
     setCurrentPage(pageNumbers);
   };
 
   return (
     <Layout>
-      <FilterView />
-      <FilterSort filterValue={sort} onChange={handleSortChange} />
-      <ResetButton resetLocal={resetLocal} />
-      <Cards
-        data={currentCard}
-        onImageCloseClick={onImageCloseClick}
-        deletedCards={deletedCards}
-      />
-      <Pagination
-        cardsPerPage={cardsPerPage}
-        totalCards={data.length}
-        paginate={paginate}
-      />
+      
+      <FilterView filterValue={view} onChange={handleViewChange} />
+
+      {view === View.Cards ? (
+        <>
+          <FilterSort filterValue={sort} onChange={handleSortChange} />
+          <ResetButton resetLocal={resetLocal} />
+          <Cards
+            data={currentCard}
+            onImageCloseClick={onImageCloseClick}
+            deletedCards={deletedCards}
+          />
+          <Pagination
+            cardsPerPage={cardsPerPage}
+            totalCards={data.length}
+            paginate={paginate}
+          />
+        </>
+      ) : (
+        <Tree categories={categories} data={data} />
+      )}
     </Layout>
   );
 };

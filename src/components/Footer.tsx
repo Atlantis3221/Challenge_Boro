@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
-  position: sticky;
+  position: fixed;
   bottom: 0;
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@ const FooterContainer = styled.footer`
   width: 100%;
   padding: 15px 30px;
   background: lightgray;
-  z-index: 100;
+  z-index: 99;
 `;
 
 const FooterText = styled.p`

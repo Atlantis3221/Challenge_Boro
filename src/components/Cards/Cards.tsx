@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useCatalog from "../../hooks/useCatalog";
 import { ICard } from "../Main";
 import {
   Container,
@@ -16,38 +17,7 @@ const Cards: React.FC<{
   onImageCloseClick: (key: string) => void;
   deletedCards: string[];
 }> = ({ data, onImageCloseClick, deletedCards }) => {
-
-  const formatDate = (timestamp: number) => {
-    const date = new Date(timestamp);
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const year = date.getFullYear();
-    const month = months[date.getMonth()];
-    const dateDay = date.getDate();
-    return dateDay + " " + month + " " + year;
-  };
-
-  const parseName = (str: any) => {
-    const array = str.split("/");
-    const name = array[1].match(/[a-z]+/g);
-    name.pop();
-    const capitalize = (str: any) => {
-      return str[0].toUpperCase() + str.slice(1);
-    };
-    return name.map(capitalize).join(" ");
-  };
+  const { formatDate, parseName } = useCatalog();
 
   return (
     <Container>
