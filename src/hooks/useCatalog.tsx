@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { CardSort, ICard, View } from "../components/Main";
+import { CardSort } from "../interfaces/CardSort";
+import { ICard } from "../interfaces/ICard";
+import { View } from "../interfaces/View";
 
 const useCatalog = () => {
   const [error, setError] = useState(null);
@@ -22,38 +24,6 @@ const useCatalog = () => {
       });
   };
 
-  const parseName = (str: any) => {
-    const array = str.split("/");
-    const name = array[1].match(/[a-z]+/g);
-    name.pop();
-    const capitalize = (str: any) => {
-      return str[0].toUpperCase() + str.slice(1);
-    };
-    return name.map(capitalize).join(" ");
-  };
-
-  const formatDate = (timestamp: number) => {
-    const date = new Date(timestamp);
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const year = date.getFullYear();
-    const month = months[date.getMonth()];
-    const dateDay = date.getDate();
-    return dateDay + " " + month + " " + year;
-  };
-
   const getCategories = () => {
     // @ts-ignore
     const unique: any = [...new Set(data.map((a) => a.category))];
@@ -71,9 +41,9 @@ const useCatalog = () => {
     setSort(e.target.value);
     setData((prevState) => sortCards(e.target.value, prevState));
   };
-  const handleViewChange = (e:any) => {
+  const handleViewChange = (e: any) => {
     setView(e.target.value);
-  }
+  };
 
   const sortCards = (type: CardSort, d: ICard[]) => {
     switch (type) {
@@ -96,8 +66,6 @@ const useCatalog = () => {
     handleSortChange,
     handleViewChange,
     categories,
-    parseName,
-    formatDate
   };
 };
 

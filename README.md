@@ -1,7 +1,12 @@
-# Для запуска
-1. Скачать проект
-2. yarn
-3. yarn start
+Перед запуском 
+
+$: git clone git@github.com:Atlantis3221/Challenge_Boro.git
+$: cd Challenge_Boro
+$: yarn
+
+Запустить проект
+
+$: yarn start
 
 ## ТЗ:
 Сделать страницу с шапкой и футером во всю ширину страницы, которые при прокрутке остаются на месте.

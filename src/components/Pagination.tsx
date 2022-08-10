@@ -4,7 +4,7 @@ import styled from "styled-components";
 const PaginationContainer = styled.div`
   padding: 15px;
   display: flex;
-  
+  margin-bottom: 30px;
   width: 100%;
   justify-content: center;
 `;
@@ -15,17 +15,16 @@ const PaginationList = styled.ul`
   column-gap: 5px;
   row-gap: 13px;
 `;
-const ListItem = styled.li`
-`;
+const ListItem = styled.li``;
 const ListLink = styled.a`
-border-radius: 2px;
-background: lightgray;
-&:hover,
-&:focus {
-  color: #ccc;
-  background-color: gray;
-  transition: all 0.5s ease-out;
-}
+  border-radius: 2px;
+  background: lightgray;
+  &:hover,
+  &:focus {
+    color: #ccc;
+    background-color: gray;
+    transition: all 0.5s ease-out;
+  }
   padding: 4px;
   text-decoration: none;
   width: 100%;

@@ -12,18 +12,21 @@ const FooterContainer = styled.footer`
   z-index: 99;
 `;
 
-const FooterText = styled.p`
+const FooterText = styled.span`
   font-size: 16px;
 `;
 
 const FooterLink = styled.a`
   text-decoration: none;
-`
+`;
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <FooterText>Tugarev Stepan <FooterLink href="https://t.me/Stepa2garev">Telegram</FooterLink></FooterText>
+      <FooterText>
+        Tugarev Stepan{" "}
+        <FooterLink href="https://t.me/Stepa2garev">Telegram</FooterLink>
+      </FooterText>
     </FooterContainer>
   );
 };

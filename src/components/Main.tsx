@@ -1,43 +1,36 @@
 import React, { useEffect, useState, useMemo } from "react";
 import Cards from "./Cards/Cards";
 import Pagination from "./Pagination";
-import FilterView from "./RadioButton/View";
-import FilterSort from "./RadioButton/Sort";
+import FilterView from "./View";
+import FilterSort from "./Sort";
 import ResetButton from "./ResetButton";
 import useCatalog from "../hooks/useCatalog";
 import styled from "styled-components";
-import Tree from "./Tree";
-
+import Tree from "./Tree/Tree";
+import { View } from "../interfaces/View";
 
 const Layout = styled.main`
   padding: 30px;
 `;
-export interface ICard {
-  category: string;
-  image: string;
-  filesize: number;
-  timestamp: number;
-}
-export enum CardSort {
-  Category = "category",
-  Timestamp = "timestamp",
-  FileSize = "filesize",
-}
-
-export enum View {
-  Cards = "cards",
-  Tree = "tree",
-}
 
 const Main = () => {
-  const { data, sort, view, loading, handleSortChange, handleViewChange, categories } =
-    useCatalog();
+  const {
+    data,
+    sort,
+    view,
+    handleSortChange,
+    handleViewChange,
+    categories,
+  } = useCatalog();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage] = useState(25);
-  // @ts-ignore
-  const [getLocal, setGetLocal] = useState(JSON.parse(localStorage.getItem("deletedCards")));
+  const [localCards, setLocalCards] = useState(
+    localStorage.getItem("deletedCards")
+  );
   const [deletedCards, setDeletedCards] = useState<any[]>([]);
+
+  // {localCards !==null ? setDeletedCards(JSON.parse(localCards)): setDeletedCards([])}
 
   const lastCardIndex = currentPage * cardsPerPage;
   const firstCardIndex = lastCardIndex - cardsPerPage;
@@ -46,19 +39,25 @@ const Main = () => {
     return data.slice(firstCardIndex, lastCardIndex);
   }, [data, firstCardIndex, lastCardIndex]);
 
-  const onImageCloseClick = (key: string) => {
-    setDeletedCards((prevState) => [...prevState, key]);
-  };
-
   useEffect(() => {
-    if (getLocal !== null) {
-      setDeletedCards(getLocal);
-    }
-  }, [getLocal]);
-
-  useEffect(() => {
+    console.log(localCards)
     localStorage.setItem("deletedCards", JSON.stringify(deletedCards));
+    console.log(deletedCards)
   }, [deletedCards]);
+
+  useEffect(() => {
+    if (localCards !== null) {
+      const parsedCards = JSON.parse(localCards);
+      return setDeletedCards(parsedCards);
+    }
+  }, [localCards]);
+
+  const onImageCloseClick = (key: string) => {
+    console.log(deletedCards);
+    setDeletedCards((prevState) => [...prevState, key]);
+    console.log(deletedCards);
+    console.log(deletedCards);
+  };
 
   const resetLocal = () => {
     setDeletedCards([]);
@@ -71,7 +70,6 @@ const Main = () => {
 
   return (
     <Layout>
-      
       <FilterView filterValue={view} onChange={handleViewChange} />
 
       {view === View.Cards ? (

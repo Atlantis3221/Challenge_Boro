@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import useCatalog from "../../hooks/useCatalog";
-import { ICard } from "../Main";
+import { parseName, formatDate } from "../../helpers/parser";
+import { ICard } from "../../interfaces/ICard";
 import {
   Container,
   CardContainer,
@@ -17,8 +17,6 @@ const Cards: React.FC<{
   onImageCloseClick: (key: string) => void;
   deletedCards: string[];
 }> = ({ data, onImageCloseClick, deletedCards }) => {
-  const { formatDate, parseName } = useCatalog();
-
   return (
     <Container>
       {data.map((cardInfo) => (
@@ -28,9 +26,7 @@ const Cards: React.FC<{
           ) : (
             <CardContainer key={cardInfo.image}>
               <CardImage
-                style={{
-                  background: `url(http://contest.elecard.ru/frontend_data/${cardInfo.image}`,
-                }}
+              background={cardInfo.image}
               />
               <CardContent>
                 <CardInfo>

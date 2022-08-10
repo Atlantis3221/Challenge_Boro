@@ -20,9 +20,11 @@ export const CardContent = styled.div`
   flex-direction: column;
   row-gap: 10px;
 `;
-export const CardImage = styled.div`
+export const CardImage = styled.div<{ background: string }>`
   width: 100%;
   height: 300px;
+  background: ${(props) =>
+    `url(http://contest.elecard.ru/frontend_data/${props.background})`};
   background-size: cover !important;
   background-position: center !important;
 `;
@@ -46,7 +48,7 @@ export const CloseIconWrapper = styled.div`
   width: 24px;
   background: #ccc;
   cursor: pointer;
-`
+`;
 export const ButtonContainer = styled.button`
   margin-bottom: 30px;
   background: #ccc;

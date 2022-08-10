@@ -16,11 +16,20 @@ const HeaderText = styled.h1`
   font-size: 24px;
   font-weight: 700;
 `;
+const HeaderLink = styled.a`
+  &:active,
+  :hover,:visited {
+    color: #000000 !important;
+    text-decoration: none;
+  }
+`;
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <HeaderText>Элекард</HeaderText>
+      <HeaderLink href="#">
+        <HeaderText>Элекард</HeaderText>
+      </HeaderLink>
     </HeaderContainer>
   );
 };

@@ -13,11 +13,14 @@ const LoaderWrapper = styled.div`
   align-items: center;
   position: fixed;
 `
+const AppWrapper = styled.div`
+  height: 100vh;
+`
 
 function App() {
   const {loading} = useCatalog()
   return (
-    <div style={{height: "100vh"}}>
+    <AppWrapper>
       {loading ? <LoaderWrapper><ClipLoader color={"ccc"} loading={loading} size={150} /></LoaderWrapper> : 
       <>
       <Header />
@@ -25,7 +28,7 @@ function App() {
       <Footer />
       </>
     }
-    </div>
+    </AppWrapper>
   );
 }
 
